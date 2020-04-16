@@ -4,6 +4,13 @@ LaTeX documentclass for my Homework, based on the scrartcl class
 ## Usage
 `\documentclass[OPTIONS]{hwrk}`
 
+## Install (linux)
+1. LaTeX will look for cls inside of `kpsewhich -var-value=TEXMFHOME`
+2. `mkdir tex/latex --parents`
+3. `mv hwrk.cls $(kpsewhich -var-value=TEXMFHOME)/tex/latex/`
+4. Update package cache with `sudo mktexlsr`
+
+
 ## Provides
 ### Commands
 - For changing header (will overwrite options)
