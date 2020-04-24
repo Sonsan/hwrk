@@ -2,8 +2,9 @@
 
 \ProvidesClass{hwrk}[2020/04/15 My Homework template]
 
-\LoadClass{scrartcl}
+\LoadClass{article}
 
+\RequirePackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[ngerman]{babel}
 \RequirePackage{amsmath, amssymb, amsfonts}
@@ -20,59 +21,37 @@
 	calc
 }
 
-
-% Variables
-\def\name{Modulname}
-\def\sid{Modulname}
-\def\modul{Modulname}
-\def\shtnr{NR}
-\def\tut{Tutor}
-\def\grp{Grp}
-
-%% OPTIONS
-\DeclareOption{theo}{
-	\def\modul{Theoretische Physik 2 }
-	\def\tut{Theo Tutor}
-	\def\grp{Theo Gruppe}}
-
-\DeclareOption{ex}{
-	\def\modul{Experimentalphysik 2 }
-	\def\tut{Ex Tutor}
-	\def\grp{ex Gruppe}}
-
-\DeclareOption{math}{
-	\def\modul{Mathematik 2 }
-	\def\tut{Mathe Tutor}
-	\def\grp{mathe gruppe}}
-
-\ExecuteOptions{theo, ex, math}
-\ProcessOptions
-
 % Header settings
 \setlength{\headheight}{26pt}
 \pagestyle{fancy}
 
-
 %% Commands
-% Only used before begin document
-\newcommand{\setmodule}[1]{\def\modul{#1 }}
-\newcommand{\setshtnr}[1]{\def\shtnr{#1}}
-\newcommand{\settut}[1]{\def\tut{#1}}
-\newcommand{\setgrp}[1]{\def\grp{#1}}
-\newcommand{\setname}[1]{\def\name{#1}}
-\newcommand{\setid}[1]{\def\sid{#1}}
+% Variables
+\newcommand*{\hwrktutor}[1]{\gdef\@hwrktutor{#1}}
+\newcommand*{\hwrkmodul}[1]{\gdef\@hwrkmodul{#1}}
+\newcommand*{\hwrkgroup}[1]{\gdef\@hwrkgroup{#1}}
 
-% Number sets
+% Symbols
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\eqdef}{\ensuremath{\mathrel{\stackrel{\mathrm{def}}{=}}}}
+\newcommand{\tsymb}[2]{\ensuremath{\mathrel{\stackrel{\mathrm{#1}}{#2}}}}
 
+% Vectors
+\newcommand{\twovec}[2]{\begin{pmatrix} #1\\#2 \end{pmatrix}}
+\newcommand{\threevec}[3]{\begin{pmatrix} #1\\#2\\#3 \end{pmatrix}}
+\newcommand{\fourvec}[4]{\begin{pmatrix} #1\\#2\\#3\\#4 \end{pmatrix}}
+
+% Differentials
+% https://ftp.fau.de/ctan/macros/latex/contrib/physics/physics.pdf
 
 \AtBeginDocument{
-\lhead{\name} % Name
-\chead{\textbf{\modul \\ sheet \shtnr}} % Modul - UeB NR
-\rhead{\sid} % Student number
-\lfoot{\textbf{Tutor:} \tut} % Tutor: Name
-\rfoot{\textbf{Group:} \grp} % Group: NR
+\lhead{\@author}
+\chead{\textbf{\@hwrkmodul \\ \@title}} % Modul - UeB NR
+\rhead{\@date}
+\lfoot{\textbf{Tutor:} \@hwrktutor}
+\rfoot{\textbf{Group:} \@hwrkgroup}
 }
+

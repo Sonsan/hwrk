@@ -2,9 +2,15 @@
 LaTeX documentclass for my Homework, based on the scrartcl class
 
 ## Usage
-`\documentclass[OPTIONS]{hwrk}`
+`\documentclass{hwrk}`
 
-## Install (linux)
+## Install
+### General
+You can also do one of the following
+- `\documentclass{path/to/hwrk.cls}`
+- Copy/Link the hwrk.cls into your project folder
+
+### Linux
 1. LaTeX will look for cls inside of `kpsewhich -var-value=TEXMFHOME`
 2. `mkdir tex/latex --parents`
 3. `mv hwrk.cls $(kpsewhich -var-value=TEXMFHOME)/tex/latex/`
@@ -13,13 +19,9 @@ LaTeX documentclass for my Homework, based on the scrartcl class
 
 ## Provides
 ### Commands
-- For changing header (will overwrite options)
-	- `\settut{Tutor name}`
-	- `\setmodule{Module Name}`
-	- `\setshtnr{sheet NR}`
-	- `\setgrp{Group NR}`
-	- `\setname{your name}`
-	- `\setid{student id}`
+- `\hwrktutor{Tutor name}`
+- `\hwrkmodul{Module Name}`
+- `\hwrkgroup{Group NR}`
 
 ### Packages
 - physics
@@ -30,18 +32,9 @@ LaTeX documentclass for my Homework, based on the scrartcl class
 - amsfonts
 - graphicx
 - fancyhdr
+- geometry
 - tikz
 	- intersections
 	- decorations.pathmorphing
 	- decorations.pathreplacing
 	- calc
-
-## ToDo
-- Pass variables via options (i.e. `\documentclass[name=Nils]{hwrk}`)
-	- [ ] name
-	- [ ] studentid
-	- [ ] module
-	- [ ] tutor
-	- [ ] group
-	- [ ] sheet nr
-- [ ] Unique commands for theo, ex, prog and math
